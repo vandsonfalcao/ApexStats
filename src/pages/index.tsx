@@ -100,7 +100,7 @@ export default function Index() {
                 <a>
                   {playerData.legends?.selected.data[0]
                     ? playerData.legends?.selected.data[0].value
-                    : ""}
+                    : "-"}
                 </a>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function Index() {
                 <a>
                   {playerData.legends?.selected.data[1]
                     ? playerData.legends?.selected.data[1].value
-                    : ""}
+                    : "-"}
                 </a>
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function Index() {
                 <a>
                   {playerData.legends?.selected.data[2]
                     ? playerData.legends?.selected.data[2].value
-                    : ""}
+                    : "-"}
                 </a>
               </div>
             </div>
@@ -166,9 +166,9 @@ export default function Index() {
             <br />
             <a>Plataforma: {playerData.global?.platform}</a>
             {playerData.realtime?.isOnline ? (
-              <p className={styles.offline}>Offline</p>
-            ) : (
               <p className={styles.online}>Online</p>
+            ) : (
+              <p className={styles.offline}>Offline</p>
             )}
           </div>
         </div>
