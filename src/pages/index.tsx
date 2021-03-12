@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/pages/index.module.css";
 
+//Definindo type
 interface player {
   global: {
     name: string;
