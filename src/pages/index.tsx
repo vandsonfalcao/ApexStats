@@ -91,23 +91,47 @@ export default function Index() {
           <div id={styles.userStats}>
             <div>
               <div>
-                <span>{playerData.legends?.selected.data[0].name}</span>
+                <span>
+                  {playerData.legends?.selected.data[0]
+                    ? playerData.legends?.selected.data[0].name
+                    : "no-data"}
+                </span>
                 <br />
-                <a>{playerData.legends?.selected.data[0].value}</a>
+                <a>
+                  {playerData.legends?.selected.data[0]
+                    ? playerData.legends?.selected.data[0].value
+                    : ""}
+                </a>
               </div>
             </div>
             <div>
               <div>
-                <span>{playerData.legends?.selected.data[1].name}</span>
+                <span>
+                  {playerData.legends?.selected.data[1]
+                    ? playerData.legends?.selected.data[1].name
+                    : "no-data"}
+                </span>
                 <br />
-                <a>{playerData.legends?.selected.data[1].value}</a>
+                <a>
+                  {playerData.legends?.selected.data[1]
+                    ? playerData.legends?.selected.data[1].value
+                    : ""}
+                </a>
               </div>
             </div>
             <div>
               <div>
-                <span>{playerData.legends?.selected.data[2].name}</span>
+                <span>
+                  {playerData.legends?.selected.data[2]
+                    ? playerData.legends?.selected.data[2].name
+                    : "no-data"}
+                </span>
                 <br />
-                <a>{playerData.legends?.selected.data[2].value}</a>
+                <a>
+                  {playerData.legends?.selected.data[2]
+                    ? playerData.legends?.selected.data[2].value
+                    : ""}
+                </a>
               </div>
             </div>
           </div>
@@ -142,9 +166,9 @@ export default function Index() {
             <br />
             <a>Plataforma: {playerData.global?.platform}</a>
             {playerData.realtime?.isOnline ? (
-              <p className={styles.online}>Online</p>
-            ) : (
               <p className={styles.offline}>Offline</p>
+            ) : (
+              <p className={styles.online}>Online</p>
             )}
           </div>
         </div>
