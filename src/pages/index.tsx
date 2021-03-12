@@ -76,19 +76,78 @@ export default function Index() {
 
   return (
     <div className={styles.container}>
-      <p>NickName: {playerData.global?.name}</p>
-      <p>Plataforma: {playerData.global?.platform}</p>
-      <p>Level: {playerData.global?.level}</p>
-      <img
-        src={playerData.global?.rank.rankImg}
-        alt={playerData.global?.rank.rankName}
-      />
-      <p>Rank: {playerData.global?.rank.rankName}</p>
-      <p>LendaSelecionada: {playerData.realtime?.selectedLegend}</p>
-      <img
-        src={playerData.legends?.selected.ImgAssets.icon}
-        alt={playerData.global?.rank.rankName}
-      />
+      <div className={styles.legendStats}>
+        <div>LEGEND SELECTED</div>
+        <div className={styles.legendContainer}>
+          <div id={styles.userInfo}>
+            <p>{` {${playerData.global?.name}} `}</p>
+            <img
+              src={playerData.global?.rank.rankImg}
+              alt={playerData.global?.rank.rankName}
+            />
+            <span>{playerData.global?.rank.rankName}</span>
+          </div>
+          <div id={styles.userStats}>
+            <div>
+              <div>
+                <span>{playerData.legends?.selected.data[0].name}</span>
+                <br />
+                <a>{playerData.legends?.selected.data[0].value}</a>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{playerData.legends?.selected.data[1].name}</span>
+                <br />
+                <a>{playerData.legends?.selected.data[1].value}</a>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{playerData.legends?.selected.data[2].name}</span>
+                <br />
+                <a>{playerData.legends?.selected.data[2].value}</a>
+              </div>
+            </div>
+          </div>
+          <div id={styles.userImg}>
+            <img src={playerData.legends?.selected.ImgAssets.icon} alt="" />
+          </div>
+        </div>
+      </div>
+      <div className={styles.accountStats}>
+        <div>ACCOUNT STATS</div>
+        <div className={styles.accountContainer}>
+          <div className={styles.header}>
+            <div>
+              <span>{`Total ${playerData.total?.kills.name}`}</span>
+              <br />
+              <a>{playerData.total?.kills.value}</a>
+            </div>
+            <div>
+              <span>{`Total ${playerData.total?.damage.name}`}</span>
+              <br />
+              <a>{playerData.total?.damage.value}</a>
+            </div>
+            <div>
+              <span>{`Total ${playerData.total?.headshots.name}`}</span>
+              <br />
+              <a>{playerData.total?.headshots.value}</a>
+            </div>
+          </div>
+          <div className={styles.main}>
+            <header>Level</header>
+            <strong>{playerData.global?.level}</strong>
+            <br />
+            <a>Plataforma: {playerData.global?.platform}</a>
+            {playerData.realtime?.isOnline ? (
+              <p className={styles.online}>Online</p>
+            ) : (
+              <p className={styles.offline}>Offline</p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
