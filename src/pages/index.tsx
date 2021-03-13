@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { AccountStats } from "../components/AccountStats";
 import { LegendStats } from "../components/LegendStats";
 import styles from "../styles/pages/index.module.css";
@@ -68,10 +69,13 @@ interface player {
 
 export default function Index() {
   const [playerData, setPlayerData] = useState({} as player);
+  const route = useRouter(); // o route.query so fica pronto depois da pagina carregar esse é o problema
+  const [platform, setPlatform] = useState("PS4");
+  const [playerId, setPlayerId] = useState("TNBr_FakeNinJa");
 
   useEffect(() => {
     fetch(
-      "https://api.mozambiquehe.re/bridge?version=5&platform=PS4&player=TNBr_FakeNinJa&auth=jqxDHdVAYnI4luU8LvkE"
+      `https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${playerId}&auth=jqxDHdVAYnI4luU8LvkE`
     )
       .then((res) => res.json())
       .then((data) => setPlayerData(data));
