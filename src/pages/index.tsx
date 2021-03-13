@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { AccountStats } from "../components/AccountStats";
+import { LegendStats } from "../components/LegendStats";
 import styles from "../styles/pages/index.module.css";
 
 //Definindo type
@@ -76,103 +78,11 @@ export default function Index() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.legendStats}>
-        <div>LEGEND SELECTED</div>
-        <div className={styles.legendContainer}>
-          <div id={styles.userInfo}>
-            <p>{` {${playerData.global?.name}} `}</p>
-            <img
-              src={playerData.global?.rank.rankImg}
-              alt={playerData.global?.rank.rankName}
-            />
-            <span>{playerData.global?.rank.rankName}</span>
-          </div>
-          <div id={styles.userStats}>
-            <div>
-              <div>
-                <span>
-                  {playerData.legends?.selected.data[0]
-                    ? playerData.legends?.selected.data[0].name
-                    : "no-data"}
-                </span>
-                <br />
-                <a>
-                  {playerData.legends?.selected.data[0]
-                    ? playerData.legends?.selected.data[0].value
-                    : "-"}
-                </a>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>
-                  {playerData.legends?.selected.data[1]
-                    ? playerData.legends?.selected.data[1].name
-                    : "no-data"}
-                </span>
-                <br />
-                <a>
-                  {playerData.legends?.selected.data[1]
-                    ? playerData.legends?.selected.data[1].value
-                    : "-"}
-                </a>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>
-                  {playerData.legends?.selected.data[2]
-                    ? playerData.legends?.selected.data[2].name
-                    : "no-data"}
-                </span>
-                <br />
-                <a>
-                  {playerData.legends?.selected.data[2]
-                    ? playerData.legends?.selected.data[2].value
-                    : "-"}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div id={styles.userImg}>
-            <img src={playerData.legends?.selected.ImgAssets.icon} alt="" />
-          </div>
-        </div>
+    <>
+      <div className={styles.container}>
+        <LegendStats data={playerData} />
+        <AccountStats data={playerData} />
       </div>
-      <div className={styles.accountStats}>
-        <div>ACCOUNT STATS</div>
-        <div className={styles.accountContainer}>
-          <div className={styles.header}>
-            <div>
-              <span>{`Total ${playerData.total?.kills.name}`}</span>
-              <br />
-              <a>{playerData.total?.kills.value}</a>
-            </div>
-            <div>
-              <span>{`Total ${playerData.total?.damage.name}`}</span>
-              <br />
-              <a>{playerData.total?.damage.value}</a>
-            </div>
-            <div>
-              <span>{`Total ${playerData.total?.headshots.name}`}</span>
-              <br />
-              <a>{playerData.total?.headshots.value}</a>
-            </div>
-          </div>
-          <div className={styles.main}>
-            <header>Level</header>
-            <strong>{playerData.global?.level}</strong>
-            <br />
-            <a>Plataforma: {playerData.global?.platform}</a>
-            {playerData.realtime?.isOnline ? (
-              <p className={styles.online}>Online</p>
-            ) : (
-              <p className={styles.offline}>Offline</p>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
