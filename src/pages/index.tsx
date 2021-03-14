@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { AccountStats } from "../components/AccountStats";
 import { LegendStats } from "../components/LegendStats";
 import styles from "../styles/pages/index.module.css";
@@ -52,15 +51,15 @@ interface player {
     };
   };
   total: {
-    kills: {
+    specialEvent_kills: {
       name: string;
       value: number;
     };
-    headshots: {
+    specialEvent_wins: {
       name: string;
       value: number;
     };
-    damage: {
+    specialEvent_damages: {
       name: string;
       value: number;
     };
@@ -69,16 +68,34 @@ interface player {
 
 export default function Index() {
   const [playerData, setPlayerData] = useState({} as player);
-  const route = useRouter(); // o route.query so fica pronto depois da pagina carregar esse é o problema
-  const [platform, setPlatform] = useState("PS4");
-  const [playerId, setPlayerId] = useState("TNBr_FakeNinJa");
 
-  useEffect(() => {
+  function getDataFromApi(platform: string, id: string) {
     fetch(
-      `https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${playerId}&auth=jqxDHdVAYnI4luU8LvkE`
+      `https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${id}&auth=jqxDHdVAYnI4luU8LvkE`
     )
       .then((res) => res.json())
       .then((data) => setPlayerData(data));
+  }
+
+  useEffect(() => {
+    const platform = new URL(window.location.href).searchParams.get("platform");
+    const playerName = new URL(window.location.href).searchParams.get(
+      "playerName"
+    );
+
+    if (platform != null && playerName != null) {
+      fetch(
+        `https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${playerName}&auth=jqxDHdVAYnI4luU8LvkE`
+      ).then((res) => {
+        if (res.status != 200) {
+          getDataFromApi("PS4", "TNBr_FakeNinJa");
+        } else {
+          getDataFromApi(platform, playerName);
+        }
+      });
+    } else {
+      getDataFromApi("PS4", "TNBr_FakeNinJa");
+    }
   }, []);
 
   return (

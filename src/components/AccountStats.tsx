@@ -7,19 +7,19 @@ export function AccountStats(props) {
       <div className={styles.accountContainer}>
         <div className={styles.header}>
           <div>
-            <span>{`Total ${props.data.total?.kills.name}`}</span>
+            <span>{`Total Kills`}</span>
             <br />
-            <a>{props.data.total?.kills.value}</a>
+            <a>{props.data.total?.specialEvent_kills.value}</a>
           </div>
           <div>
-            <span>{`Total ${props.data.total?.damage.name}`}</span>
+            <span>{`Total Damage`}</span>
             <br />
-            <a>{props.data.total?.damage.value}</a>
+            <a>{props.data.total?.specialEvent_damage.value}</a>
           </div>
           <div>
-            <span>{`Total ${props.data.total?.headshots.name}`}</span>
+            <span>{`Total Wins`}</span>
             <br />
-            <a>{props.data.total?.headshots.value}</a>
+            <a>{props.data.total?.specialEvent_wins.value}</a>
           </div>
         </div>
         <div className={styles.main}>
