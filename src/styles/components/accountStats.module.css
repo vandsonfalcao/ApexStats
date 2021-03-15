@@ -53,8 +53,8 @@
 .main {
   background: url("/levelup.svg") no-repeat center;
   background-size: contain;
-  color: rgb(0, 0, 170);
-  text-shadow: 1px 1px 1px white;
+  color: white;
+  text-shadow: 1px 1px 3px rgb(255, 0, 0);
 }
 .main header {
   font-family: Georgia, "Times New Roman", Times, serif;
