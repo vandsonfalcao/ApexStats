@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AccountStats } from "../components/AccountStats";
 import { LegendStats } from "../components/LegendStats";
+import { SearchPlayer } from "../components/SearchPlayer";
 import styles from "../styles/pages/index.module.css";
 
 //Definindo type
@@ -103,6 +104,9 @@ export default function Index() {
       <div className={styles.container}>
         <LegendStats data={playerData} />
         <AccountStats data={playerData} />
+      </div>
+      <div className={styles.footer}>
+        <SearchPlayer />
       </div>
     </>
   );

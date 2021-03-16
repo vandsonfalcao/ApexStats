@@ -1,0 +1,46 @@
+.container {
+    width: 50%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px
+}
+.container div {
+    display: grid;
+}
+.container div input {
+    padding: 15px 5px 15px 20px;
+
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+
+    border-radius: 10px 0 10px 0;
+    border: 1px solid #666;
+    outline: none;
+}
+.container div Select{
+    
+
+}
+.container div button{
+    padding: 15px 5px 15px 20px;
+
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+
+    border-radius: 10px 0 10px 0;
+    border: 1px solid #666;
+    outline: none;
+
+    Color: black;
+    cursor: pointer;
+    padding: 0;
+}
+.btActive {
+    background: linear-gradient(to bottom, lime, transparent, lime);
+}
+.btInative {
+    background: linear-gradient(to bottom, red, transparent, red);
+}
