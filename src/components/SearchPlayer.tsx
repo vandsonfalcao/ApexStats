@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import styles from "../styles/components/SearchPlayer.module.css";
+import React, { useContext, useEffect, useState } from "react";
+import { HomeContext } from "../context/HomeContext";
+import styles from "../styles/components/searchPlayer.module.css";
 
 interface Newplayer {
   nickname: string;
@@ -7,18 +8,19 @@ interface Newplayer {
 }
 
 export function SearchPlayer() {
+  const { getDataFromApi } = useContext(HomeContext);
   const [isValid, setIsValid] = useState(false);
-  const [newPlayer, setNewPlayer] = useState({} as Newplayer);
+  const [newPlayer, setNewPlayer] = useState({
+    nickname: "",
+    platform: "",
+  } as Newplayer);
 
   function searchPlayer() {
-    console.log(newPlayer, isValid);
+    getDataFromApi(newPlayer.platform, newPlayer.nickname);
   }
 
   useEffect(() => {
-    if (
-      newPlayer.nickname !== (undefined || "") &&
-      newPlayer.platform !== (undefined || "")
-    ) {
+    if (newPlayer.nickname !== "" && newPlayer.platform !== "") {
       setIsValid(true);
     } else {
       setIsValid(false);
