@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
 import styles from "../styles/components/SearchPlayer.module.css";
 
 interface Newplayer {
@@ -10,16 +9,16 @@ interface Newplayer {
 export function SearchPlayer() {
   const [isValid, setIsValid] = useState(false);
   const [newPlayer, setNewPlayer] = useState({} as Newplayer);
-  const options = [
-    { value: "X1", label: "XBOX" },
-    { value: "PS4", label: "PSN" },
-    { value: "PC", label: "PC" },
-  ];
 
-  function searchPlayer() {}
+  function searchPlayer() {
+    console.log(newPlayer, isValid);
+  }
 
   useEffect(() => {
-    if (newPlayer.nickname !== "" && newPlayer.platform !== "") {
+    if (
+      newPlayer.nickname !== (undefined || "") &&
+      newPlayer.platform !== (undefined || "")
+    ) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -34,6 +33,7 @@ export function SearchPlayer() {
           name="nickname"
           maxLength={24}
           placeholder="Your NickName?"
+          spellCheck={false}
           autoFocus
           onChange={(e) => {
             setNewPlayer((player) => ({ ...player, nickname: e.target.value }));
@@ -41,22 +41,25 @@ export function SearchPlayer() {
         />
       </div>
       <div>
-        <Select
-          className="basic-single"
-          classNamePrefix="your Platform?"
-          options={options}
-          onInputchange={(value: string) =>
-            setNewPlayer((player) => ({ ...player, platform: value }))
-          }
-        />
+        <select
+          name="platform"
+          onChange={(e) => {
+            setNewPlayer((player) => ({ ...player, platform: e.target.value }));
+          }}
+        >
+          <option value="">Your Platform?</option>
+          <option value="X1">XBOX</option>
+          <option value="PC">PC</option>
+          <option value="PS4">PSN</option>
+        </select>
       </div>
       <div>
         {isValid ? (
-          <button className={styles.btInative}>SearchPlayerStats</button>
-        ) : (
           <button className={styles.btActive} onClick={searchPlayer}>
             SearchPlayerStats
           </button>
+        ) : (
+          <button className={styles.btInative}>SearchPlayerStats</button>
         )}
       </div>
     </div>

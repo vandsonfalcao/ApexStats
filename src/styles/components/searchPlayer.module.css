@@ -8,7 +8,7 @@
 .container div {
     display: grid;
 }
-.container div input {
+.container div * {
     padding: 15px 5px 15px 20px;
 
     font-family: sans-serif;
@@ -18,29 +18,22 @@
     border-radius: 10px 0 10px 0;
     border: 1px solid #666;
     outline: none;
-}
-.container div Select{
-    
-
 }
 .container div button{
-    padding: 15px 5px 15px 20px;
-
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-
-    border-radius: 10px 0 10px 0;
-    border: 1px solid #666;
-    outline: none;
-
-    Color: black;
     cursor: pointer;
     padding: 0;
+    transition: all 0.4s;
 }
 .btActive {
     background: linear-gradient(to bottom, lime, transparent, lime);
 }
+.btActive:hover {
+    font-size: 1.1rem;
+}
 .btInative {
+    color:rgba(100, 100, 100, 0.8);
+    background: linear-gradient(to bottom, gray, transparent, gray);
+}
+.btInative:hover {
     background: linear-gradient(to bottom, red, transparent, red);
 }
