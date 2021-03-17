@@ -33,7 +33,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-OBS: Game statistics may not be accurate at times, this is due to API limitations.
+- OBS: Game statistics may not be accurate at times, this is due to API limitations. For greater accuracy in the information issued by the app, choose each of its legends and update the page.
 
 ## Meta
 
