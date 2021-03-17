@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
+import swal from "sweetalert";
 
 interface player {
   global: {
@@ -81,8 +82,14 @@ export function HomeContextProvider({ children }: HomeContextProviderProps) {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setPlayerData(data);
+        const keys = Object.keys(data);
+        if (keys.includes("Error")) {
+          swal("Oh no... 😧", data.Error, "error");
+          getDataFromApi("PS4", "TNBr_FakeNinJa");
+        } else {
+          console.log(data);
+          setPlayerData(data);
+        }
       });
   }
 

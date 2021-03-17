@@ -16,6 +16,12 @@ export function SearchPlayer() {
   } as Newplayer);
 
   function searchPlayer() {
+    const input = document.querySelector("input");
+    const select = document.querySelector("select");
+    input.value = "";
+    select.value = "";
+    setNewPlayer({ nickname: "", platform: "" });
+    setIsValid(false);
     getDataFromApi(newPlayer.platform, newPlayer.nickname);
   }
 
