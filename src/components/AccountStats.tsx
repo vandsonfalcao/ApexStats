@@ -47,15 +47,27 @@ interface player {
     };
   };
   total: {
-    specialEvent_kills: {
+    specialEvent_kills?: {
       name: string;
       value: number;
     };
-    specialEvent_wins: {
+    kills?: {
       name: string;
       value: number;
     };
-    specialEvent_damage: {
+    specialEvent_wins?: {
+      name: string;
+      value: number;
+    };
+    wins?: {
+      name: string;
+      value: number;
+    };
+    specialEvent_damage?: {
+      name: string;
+      value: number;
+    };
+    damage?: {
       name: string;
       value: number;
     };
@@ -67,6 +79,81 @@ interface AccountStatsProps {
 }
 
 export function AccountStats(props: AccountStatsProps) {
+  function checkKills() {
+    try {
+      props.data.total?.kills.name.length;
+      try {
+        props.data.total?.specialEvent_kills.name.length;
+        if (
+          props.data.total?.kills.value >
+          props.data.total?.specialEvent_kills.value
+        ) {
+          return props.data.total?.kills.value;
+        } else {
+          return props.data.total?.specialEvent_kills.value;
+        }
+      } catch (error) {
+        return props.data.total?.kills.value;
+      }
+    } catch (error) {
+      try {
+        props.data.total?.specialEvent_kills.name.length;
+        return props.data.total?.specialEvent_kills.value;
+      } catch (error) {
+        return "No-data";
+      }
+    }
+  }
+  function checkDamage() {
+    try {
+      props.data.total?.damage.name.length;
+      try {
+        props.data.total?.specialEvent_damage.name.length;
+        if (
+          props.data.total?.damage.value >
+          props.data.total?.specialEvent_damage.value
+        ) {
+          return props.data.total?.damage.value;
+        } else {
+          return props.data.total?.specialEvent_damage.value;
+        }
+      } catch (error) {
+        return props.data.total?.damage.value;
+      }
+    } catch (error) {
+      try {
+        props.data.total?.specialEvent_damage.name.length;
+        return props.data.total?.specialEvent_damage.value;
+      } catch (error) {
+        return "No-data";
+      }
+    }
+  }
+  function checkWins() {
+    try {
+      props.data.total?.wins.name.length;
+      try {
+        props.data.total?.specialEvent_wins.name.length;
+        if (
+          props.data.total?.wins.value >
+          props.data.total?.specialEvent_wins.value
+        ) {
+          return props.data.total?.wins.value;
+        } else {
+          return props.data.total?.specialEvent_wins.value;
+        }
+      } catch (error) {
+        return props.data.total?.wins.value;
+      }
+    } catch (error) {
+      try {
+        props.data.total?.specialEvent_wins.name.length;
+        return props.data.total?.specialEvent_wins.value;
+      } catch (error) {
+        return "No-data";
+      }
+    }
+  }
   return (
     <div className={styles.accountStats}>
       <div>ACCOUNT STATS</div>
@@ -75,17 +162,17 @@ export function AccountStats(props: AccountStatsProps) {
           <div>
             <span>{`Total Kills`}</span>
             <br />
-            <a>{props.data.total?.specialEvent_kills.value}</a>
+            <a>{checkKills()}</a>
           </div>
           <div>
             <span>{`Total Damage`}</span>
             <br />
-            <a>{props.data.total?.specialEvent_damage.value}</a>
+            <a>{checkDamage()}</a>
           </div>
           <div>
             <span>{`Total Wins`}</span>
             <br />
-            <a>{props.data.total?.specialEvent_wins.value}</a>
+            <a>{checkWins()}</a>
           </div>
         </div>
         <div className={styles.main}>
