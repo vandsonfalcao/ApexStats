@@ -3,7 +3,7 @@
   height: 100%;
 
   display: grid;
-  grid-template-rows: 20px 1fr;
+  grid-template-rows: 20px 26rem;
   gap: 0px;
 
   text-align: center;

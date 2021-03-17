@@ -1,6 +1,72 @@
 import styles from "../styles/components/accountStats.module.css";
 
-export function AccountStats(props) {
+interface player {
+  global: {
+    name: string;
+    uid: number;
+    avatar: null;
+    platform: string;
+    level: number;
+    toNextLevelPercent: number;
+    internalUpdateCount: number;
+    rank: {
+      rankScore: number;
+      rankName: string;
+      rankImg: string;
+    };
+  };
+  realtime: {
+    isOnline: number;
+    isInGame: number;
+    selectedLegend: string;
+  };
+  legends: {
+    selected: {
+      LegendName: string;
+      data: [
+        {
+          name: string;
+          value: number;
+          key: string;
+        },
+        {
+          name: string;
+          value: number;
+          key: string;
+        },
+        {
+          name: string;
+          value: number;
+          key: string;
+        }
+      ];
+      ImgAssets: {
+        icon: string;
+        banner: string;
+      };
+    };
+  };
+  total: {
+    specialEvent_kills: {
+      name: string;
+      value: number;
+    };
+    specialEvent_wins: {
+      name: string;
+      value: number;
+    };
+    specialEvent_damage: {
+      name: string;
+      value: number;
+    };
+  };
+}
+
+interface AccountStatsProps {
+  data: player;
+}
+
+export function AccountStats(props: AccountStatsProps) {
   return (
     <div className={styles.accountStats}>
       <div>ACCOUNT STATS</div>
