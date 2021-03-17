@@ -66,6 +66,7 @@ interface player {
 interface HomeContextData {
   getDataFromApi: (platform: string, id: string) => void;
   playerData: player;
+  showLoad: boolean;
 }
 interface HomeContextProviderProps {
   children: ReactNode;
@@ -75,8 +76,10 @@ export const HomeContext = createContext({} as HomeContextData);
 
 export function HomeContextProvider({ children }: HomeContextProviderProps) {
   const [playerData, setPlayerData] = useState({} as player);
+  const [showLoad, setShowLoad] = useState(true);
 
   function getDataFromApi(platform: string, id: string) {
+    setShowLoad(true);
     fetch(
       `https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${id}&auth=jqxDHdVAYnI4luU8LvkE`
     )
@@ -89,6 +92,7 @@ export function HomeContextProvider({ children }: HomeContextProviderProps) {
         } else {
           console.log(data);
           setPlayerData(data);
+          setShowLoad(false);
         }
       });
   }
@@ -98,6 +102,7 @@ export function HomeContextProvider({ children }: HomeContextProviderProps) {
       value={{
         getDataFromApi,
         playerData,
+        showLoad,
       }}
     >
       {children}

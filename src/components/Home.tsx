@@ -1,13 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HomeContext } from "../context/HomeContext";
 import { AccountStats } from "./AccountStats";
 import { LegendStats } from "./LegendStats";
 import { SearchPlayer } from "./SearchPlayer";
 
 import styles from "../styles/components/home.module.css";
+import LoadingModal from "./LoadingModal";
 
 export function Home() {
-  const { getDataFromApi, playerData } = useContext(HomeContext);
+  const { getDataFromApi, playerData, showLoad } = useContext(HomeContext);
 
   useEffect(() => {
     const platform = new URL(window.location.href).searchParams.get("platform");
@@ -32,6 +33,7 @@ export function Home() {
 
   return (
     <>
+      {showLoad && <LoadingModal />}
       <div className={styles.container}>
         <LegendStats data={playerData} />
         <AccountStats data={playerData} />
