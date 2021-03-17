@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { HomeContext } from "../context/HomeContext";
 import styles from "../styles/components/legendStats.module.css";
 
 interface player {
@@ -67,6 +69,8 @@ interface LegendStatsProps {
 }
 
 export function LegendStats(props: LegendStatsProps) {
+  const { showLoad } = useContext(HomeContext);
+
   return (
     <div className={styles.legendStats}>
       <div>LEGEND SELECTED</div>
@@ -127,7 +131,9 @@ export function LegendStats(props: LegendStatsProps) {
           </div>
         </div>
         <div id={styles.userImg}>
-          <img src={props.data.legends?.selected.ImgAssets.icon} alt="" />
+          {!showLoad && (
+            <img src={props.data.legends?.selected.ImgAssets.icon} alt="" />
+          )}
         </div>
       </div>
     </div>
