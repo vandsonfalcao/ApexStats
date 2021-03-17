@@ -56,7 +56,7 @@ interface player {
       name: string;
       value: number;
     };
-    specialEvent_damages: {
+    specialEvent_damage: {
       name: string;
       value: number;
     };
