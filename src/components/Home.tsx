@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { HomeContext } from "../context/HomeContext";
 import { AccountStats } from "./AccountStats";
 import { LegendStats } from "./LegendStats";

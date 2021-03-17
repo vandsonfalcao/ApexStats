@@ -1,39 +1,39 @@
 .container {
-    width: 50%;
+  width: 50%;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
 }
 .container div {
-    display: grid;
+  display: grid;
 }
 .container div * {
-    padding: 15px 5px 15px 20px;
+  padding: 15px 5px 15px 20px;
 
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
 
-    border-radius: 10px 0 10px 0;
-    border: 1px solid #666;
-    outline: none;
+  border-radius: 10px 0 10px 0;
+  border: 1px solid #666;
+  outline: none;
 }
-.container div button{
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.4s;
+.container div button {
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.1s;
 }
 .btActive {
-    background: linear-gradient(to bottom, lime, transparent, lime);
+  background: linear-gradient(to bottom, lime, white, lime);
 }
 .btActive:hover {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 .btInative {
-    color:rgba(100, 100, 100, 0.8);
-    background: linear-gradient(to bottom, gray, transparent, gray);
+  color: rgba(100, 100, 100, 0.8);
+  background: linear-gradient(to bottom, gray, white, gray);
 }
 .btInative:hover {
-    background: linear-gradient(to bottom, red, transparent, red);
+  background: linear-gradient(to bottom, red, white, red);
 }

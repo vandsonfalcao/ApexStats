@@ -20,7 +20,7 @@
   border-top: 4px solid white;
   border-bottom: 4px solid white;
 
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(31, 31, 31, 0.5));
+  background: radial-gradient(rgba(0, 0, 0, 0.7), rgba(31, 31, 31, 1));
 
   color: white;
 }

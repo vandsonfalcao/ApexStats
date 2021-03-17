@@ -49,15 +49,27 @@ interface player {
     };
   };
   total: {
-    specialEvent_kills: {
+    specialEvent_kills?: {
       name: string;
       value: number;
     };
-    specialEvent_wins: {
+    kills?: {
       name: string;
       value: number;
     };
-    specialEvent_damage: {
+    specialEvent_wins?: {
+      name: string;
+      value: number;
+    };
+    wins?: {
+      name: string;
+      value: number;
+    };
+    specialEvent_damage?: {
+      name: string;
+      value: number;
+    };
+    damage?: {
       name: string;
       value: number;
     };
